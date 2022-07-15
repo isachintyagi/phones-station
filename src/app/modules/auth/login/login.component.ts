@@ -1,5 +1,5 @@
 import { Component, OnDestroy, ViewEncapsulation } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { RegexService } from 'src/app/services/regex.service';
@@ -12,7 +12,7 @@ import { RegexService } from 'src/app/services/regex.service';
 })
 export class LoginComponent implements OnDestroy {
   passwordVisible = false;
-  loginForm: UntypedFormGroup = this.fb.group({
+  loginForm: FormGroup = this.fb.group({
     emailId: ["", [Validators.required, Validators.pattern(this.regexService.email)]],
     password: ["", [Validators.required, Validators.pattern(this.regexService.passwordPattern)]]
   });
@@ -24,11 +24,13 @@ export class LoginComponent implements OnDestroy {
   ) { }
 
   submit() {
+    console.log("loginForm", this.loginForm);
+
     if (this.loginForm.invalid) {
       this.loginForm.markAllAsTouched();
     } else {
       const { emailId, password } = this.loginForm.value;
-            this.router.navigate(["/dashboard"]);
+      this.router.navigate(["/dashboard"]);
     }
   }
 

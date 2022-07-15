@@ -10,6 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ShowErrorModule } from '../show-error/show-error.module';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ShowErrorModule } from '../show-error/show-error.module';
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
-    ShowErrorModule
+    ShowErrorModule,
+    MatButtonModule
   ]
 })
 export class AuthModule { }
