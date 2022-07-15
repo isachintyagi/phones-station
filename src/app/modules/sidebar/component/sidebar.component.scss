@@ -1,0 +1,23 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-style: SemiBold;
+}
+
+.container{
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    height: 100%;
+    overflow: auto;
+}
+
+.container .head{
+    color:#E1251B;
+    font-size:33px;
+    font-weight: bold;
+    padding: 30px 10px 20px;
+    text-align: center;
+}

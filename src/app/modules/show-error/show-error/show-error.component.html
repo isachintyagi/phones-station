@@ -1,0 +1,9 @@
+<ng-container *ngIf="formControlErr?.errors?.required">
+    {{requiredMsg}}
+</ng-container>
+
+<ng-container
+    *ngIf="formControlErr?.errors?.pattern && !formControlErr?.errors?.required">
+    {{patternMsg}}
+</ng-container>
+
