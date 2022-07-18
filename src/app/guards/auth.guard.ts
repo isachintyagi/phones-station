@@ -16,7 +16,7 @@ export class AuthGuard implements CanActivateChild {
   canActivateChild(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    const authData = this.authService.getAuthFromLocalStorage();
+    const authData = this.authService.getUserFromLocalStorage();
 
     if (authData && authData.token) {
       this.router.navigate(["/dashboard"]);

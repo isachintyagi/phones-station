@@ -7,14 +7,14 @@ import { AuthService } from '../services/auth.service';
   providedIn: 'root'
 })
 export class DashboardGuard implements CanActivateChild {
- 
+
   constructor(
     private authService: AuthService
   ) { }
 
 
   canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-    const authData = this.authService.getAuthFromLocalStorage();
+    const authData = this.authService.getUserFromLocalStorage();
 
     if (authData && authData.token) {
       return true;

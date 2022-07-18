@@ -9,9 +9,9 @@
       <p class="secondtext">Please log in to continue</p>
     </div>
 
-    <div fxLayout="column" class="mt-4">
-      <form [formGroup]="loginForm" id="kt_login_signin_form" (ngSubmit)="submit()" fxFlex>
-        <mat-form-field appearance="outline">
+    <form [formGroup]="loginForm" id="kt_login_signin_form" (ngSubmit)="submit()">
+      <div fxLayout="column" class="mt-4" fxFlex fxLayoutAlign="center center">
+        <mat-form-field appearance="outline" fxFlex>
           <mat-label class="labelcolor">Username</mat-label>
           <input matInput formControlName="emailId" required>
 
@@ -23,29 +23,25 @@
           </mat-error>
         </mat-form-field>
 
-        <!-- <div class="mt-8" fxLayoutGap="20px"> -->
-        <mat-form-field appearance="outline">
-          <mat-label class="labelcolor">Password</mat-label>
-          <input matInput formControlName="password" [type]="passwordVisible?'text': 'password'" required>
-          <mat-error>
-            <show-error requiredMsg="Please enter your valid password." [formControlErr]="loginForm.controls.password"
-              patternMsg="Please enter a valid password.">
-            </show-error>
-          </mat-error>
-
-          <!-- <mat-icon matSuffix class="secondary-text cursor-pointer labelcolor"
-              (click)="passwordVisible=!passwordVisible" [title]="passwordVisible?'Hide Password':'Show Password'">
-              <img
-                [src]="passwordVisible? '../../../../assets/logos/Eye.svg' : '../../../../assets/logos/Hide-eye.svg' "
-                alt="eye">
-            </mat-icon> -->
-        </mat-form-field>
-        <!-- </div> -->
-
-        <div >
-          <button mat-raised-button class="btn-primary" type="submit" id="kt_login_signin_submit" color="primary">Login</button>
+        <div fxLayout="column" fxLayoutAlign="center center" fxFlex>
+          <mat-form-field appearance="outline" fxFlex="90%">
+            <mat-label class="labelcolor">Password</mat-label>
+            <input matInput formControlName="password" [type]="passwordVisible?'text': 'password'" required>
+            <mat-error>
+              <show-error requiredMsg="Please enter your valid password." [formControlErr]="loginForm.controls.password"
+                patternMsg="Please enter a valid password.">
+              </show-error>
+            </mat-error>
+          </mat-form-field>
+          <div fxFlex class="text-center">
+            <button mat-icon-button color="primary" class="align-text" (click)="passwordVisible=!passwordVisible">{{passwordVisible?'Hide Password':'Show Password'}}</button>
+          </div>
         </div>
-        </form>
-    </div>
+        <div>
+          <button mat-raised-button class="btn-primary" type="submit" id="kt_login_signin_submit"
+            >Login</button>
+        </div>
+      </div>
+    </form>
   </div>
 </div>

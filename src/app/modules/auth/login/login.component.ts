@@ -20,17 +20,15 @@ export class LoginComponent implements OnDestroy {
   constructor(
     private fb: UntypedFormBuilder,
     private regexService: RegexService,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) { }
 
   submit() {
-    console.log("loginForm", this.loginForm);
-
     if (this.loginForm.invalid) {
       this.loginForm.markAllAsTouched();
     } else {
-      const { emailId, password } = this.loginForm.value;
-      this.router.navigate(["/dashboard"]);
+      this.authService.login();
     }
   }
 
