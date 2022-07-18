@@ -8,14 +8,14 @@
       <p class="secondtext">Create an account</p>
     </div>
 
-    <form [formGroup]="singupForm">
+    <form [formGroup]="signUpForm">
       <div fxLayout="column" class="mt-4 px-4" fxFlex fxLayoutAlign="center center">
         <mat-form-field appearance="outline" fxFlex>
           <mat-label class="labelcolor">Name</mat-label>
           <input matInput formControlName="name" required>
 
           <mat-error>
-            <show-error requiredMsg="Please enter the name." [formControlErr]="singupForm.controls.name">
+            <show-error requiredMsg="Please enter the name." [formControlErr]="signUpForm.controls.name">
             </show-error>
           </mat-error>
         </mat-form-field>
@@ -26,7 +26,7 @@
 
           <mat-error>
             <show-error requiredMsg="Email is required or has an invalid value. Please correct."
-              [formControlErr]="singupForm.controls.emailId"
+              [formControlErr]="signUpForm.controls.emailId"
               patternMsg="Email is required or has an invalid value. Please correct.">
             </show-error>
           </mat-error>
@@ -38,7 +38,7 @@
 
           <mat-error>
             <show-error requiredMsg="Phone is required or has an invalid value. Please correct."
-              [formControlErr]="singupForm.controls.emailId"
+              [formControlErr]="signUpForm.controls.emailId"
               patternMsg="Phone is required or has an invalid value. Please correct.">
             </show-error>
           </mat-error>
@@ -48,17 +48,20 @@
           <mat-label class="labelcolor">Password</mat-label>
           <input matInput formControlName="password" [type]="passwordVisible?'text': 'password'" required>
           <mat-error>
-            <show-error requiredMsg="Please enter the valid password." [formControlErr]="singupForm.controls.password"
+            <show-error requiredMsg="Please enter the valid password." [formControlErr]="signUpForm.controls.password"
               patternMsg="Please enter a valid password.">
             </show-error>
           </mat-error>
         </mat-form-field>
 
+        <div class="register-email-msg" *ngIf="!!showRegisterErrorMsg" fxFlex>
+          Email already regitsered. Please try with another email.
+        </div>
+
         <div fxFlex class="text-center" fxLayout="row" class="mb-4">
           <button fxFlex mat-button disableRipple="true" color="primary" class="align-text"
             (click)="passwordVisible=!passwordVisible">{{passwordVisible?'Hide Password':'Show Password'}}</button>
-          <button fxFlex mat-button disableRipple="true" color="primary"
-            routerLink="/auth/login">back to login</button>
+          <button fxFlex mat-button disableRipple="true" color="primary" routerLink="/auth/login">back to login</button>
         </div>
         <div>
           <button mat-raised-button class="btn-primary" (click)="submit()">Sign Up</button>

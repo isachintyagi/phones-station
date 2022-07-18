@@ -12,6 +12,8 @@ import { RegexService } from 'src/app/services/regex.service';
 export class LoginComponent {
   passwordVisible: boolean = false;
   showRegisterErrorMsg: boolean = false;
+  showInCorrectPasswordMsg: boolean = false;
+
   loginForm: FormGroup = this.fb.group({
     emailId: ["", [Validators.required, Validators.pattern(this.regexService.email)]],
     password: ["", [Validators.required, Validators.pattern(this.regexService.passwordPattern)]]
@@ -28,17 +30,28 @@ export class LoginComponent {
     if (this.loginForm.invalid) {
       this.loginForm.markAllAsTouched();
     } else {
-      this.authService.registeredEmails.subscribe((value) => {
+      const registeredAccount = this.authService.getRegisteredEmails().find(account => account.emailId === emailId);
 
-        if (value.includes(emailId)) {
-          this.authService.login(this.loginForm.getRawValue());
-        } else {
-          this.showRegisterErrorMsg = true;
-          setTimeout(() => {
-            this.showRegisterErrorMsg = false;
-          }, 5000);
-        }
-      })
+      if (!!registeredAccount) {
+        this.passwordAuthentication(password, registeredAccount);
+      } else {
+        this.showRegisterErrorMsg = true;
+        setTimeout(() => {
+          this.showRegisterErrorMsg = false;
+        }, 5000);
+      }
+    }
+  }
+  
+  passwordAuthentication(password: string, registeredAccount: any) {
+    if (password === registeredAccount.password) {
+      this.authService.login(this.loginForm.getRawValue());
+    } else {
+      this.showInCorrectPasswordMsg = true;
+
+      setTimeout(() => {
+        this.showInCorrectPasswordMsg = false;
+      }, 5000);
     }
   }
 }

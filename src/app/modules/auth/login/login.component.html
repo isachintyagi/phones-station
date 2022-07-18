@@ -36,6 +36,10 @@
         <div class="register-email-msg" *ngIf="!!showRegisterErrorMsg" fxFlex>
           Entered email address is not in our records. Please register first.
         </div>
+        <div class="register-email-msg" *ngIf="!!showInCorrectPasswordMsg" fxFlex>
+          You have entered the incorrect password.
+        </div>
+
           <div fxFlex class="text-center" fxLayout="row" class="mb-4">
             <button fxFlex mat-button disableRipple="true" color="primary" class="align-text"
               (click)="passwordVisible=!passwordVisible">{{passwordVisible?'Hide Password':'Show Password'}}</button>

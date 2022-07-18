@@ -10,8 +10,9 @@ import { RegexService } from 'src/app/services/regex.service';
   styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent {
-  passwordVisible = false;
-  singupForm: FormGroup = this.fb.group({
+  passwordVisible: boolean = false;
+  showRegisterErrorMsg: boolean = false;
+  signUpForm: FormGroup = this.fb.group({
     name: ["", [Validators.required]],
     emailId: ["", [Validators.required, Validators.pattern(this.regexService.email)]],
     phone: ["", [Validators.required, Validators.pattern(this.regexService.phoneNumber)]],
@@ -21,20 +22,26 @@ export class SignUpComponent {
   constructor(
     private fb: UntypedFormBuilder,
     private regexService: RegexService,
-    private router: Router,
     private authService: AuthService
   ) { }
 
   submit() {
+    const signUpForm = this.signUpForm;
 
-    this.authService.registeredEmails.subscribe((value)=>{
-console.log("vaue",value);
-
-    })
-    if (this.singupForm.invalid) {
-      this.singupForm.markAllAsTouched();
+    const { emailId, password } = signUpForm.getRawValue();
+    if (signUpForm.invalid) {
+      signUpForm.markAllAsTouched();
     } else {
-      // this.authService.signUp(this.singupForm.getRawValue());
+      const isEmailRegistered = this.authService.getRegisteredEmails().some(account => account.emailId===emailId);
+      
+      if (!!isEmailRegistered) {
+        this.showRegisterErrorMsg = true;
+        setTimeout(() => {
+          this.showRegisterErrorMsg = false;
+        }, 5000);
+      } else {
+        this.authService.signUp(signUpForm.getRawValue());
+      }
     }
   }
 }

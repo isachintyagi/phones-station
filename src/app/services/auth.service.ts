@@ -6,8 +6,6 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  registeredEmails: BehaviorSubject<any[]> = new BehaviorSubject([]);
-
   mockLoginResponseData: any = {
     "id": 0,
     "message": "Successful!",
@@ -27,7 +25,6 @@ export class AuthService {
   ) { }
 
   login({ emailId, password }: any) {
-    this.registeredEmails.next([emailId]);
     this.mockLoginResponseData.email = emailId;
 
     const resData = this.mockLoginResponseData;
@@ -37,18 +34,18 @@ export class AuthService {
 
   signUp({ emailId, password }: any) {
     const resData = this.mockLoginResponseData;
-    this.saveUserDetailsInLocalStorage(resData?.data);
-    this.router.navigate(["/dashboard"]);
+    this.saveEmailInLocalStorage(emailId, password);
+    this.router.navigate(["/login"]);
   }
 
 
   logout() {
-    localStorage.clear();
+    localStorage.removeItem("userDetails");
     this.router.navigate(['/auth/login']);
   }
 
   getUserFromLocalStorage(): any {
-    const authData = JSON.parse(`${localStorage.getItem("userDetails")}`);
+    const authData = JSON.parse(localStorage.getItem("userDetails"));
     return authData;
   }
 
@@ -58,5 +55,14 @@ export class AuthService {
       return true;
     }
     return false;
+  }
+
+  saveEmailInLocalStorage(emailId: string, password: string) {
+    localStorage.setItem("registeredEmails", JSON.stringify([...this.getRegisteredEmails(), { emailId, password }]));
+  }
+
+  //to check the list of registered emails
+  getRegisteredEmails(): any[] {
+    return JSON.parse(localStorage.getItem("registeredEmails")) || [];
   }
 }
