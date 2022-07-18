@@ -46,7 +46,7 @@
 
         <mat-form-field appearance="outline" fxFlex>
           <mat-label class="labelcolor">Password</mat-label>
-          <input matInput formControlName="password" [type]="passwordVisible?'text': 'password'" required>
+          <input matInput formControlName="password" [type]="passwordVisible?'text': 'password'" maxlength="14" required>
           <mat-error>
             <show-error requiredMsg="Please enter the valid password." [formControlErr]="signUpForm.controls.password"
               patternMsg="Please enter a valid password.">

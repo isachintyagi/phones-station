@@ -26,7 +26,7 @@
         <div fxLayout="column" fxLayoutAlign="center center" fxFlex>
           <mat-form-field appearance="outline" fxFlex="90%">
             <mat-label class="labelcolor">Password</mat-label>
-            <input matInput formControlName="password" [type]="passwordVisible?'text': 'password'" required>
+            <input matInput formControlName="password" [type]="passwordVisible?'text': 'password'" maxlength="14" required>
             <mat-error>
               <show-error requiredMsg="Please enter your valid password." [formControlErr]="loginForm.controls.password"
               patternMsg="Please enter a valid password.">
