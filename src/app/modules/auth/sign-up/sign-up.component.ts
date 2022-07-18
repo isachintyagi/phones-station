@@ -1,19 +1,20 @@
-import { Component, OnDestroy, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { RegexService } from 'src/app/services/regex.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  selector: 'app-sign-up',
+  templateUrl: './sign-up.component.html',
+  styleUrls: ['./sign-up.component.scss']
 })
-export class LoginComponent {
+export class SignUpComponent {
   passwordVisible = false;
   loginForm: FormGroup = this.fb.group({
+    name: ["", [Validators.required]],
     emailId: ["", [Validators.required, Validators.pattern(this.regexService.email)]],
+    phone: ["", [Validators.required, Validators.pattern(this.regexService.phoneNumber)]],
     password: ["", [Validators.required, Validators.pattern(this.regexService.passwordPattern)]]
   });
 

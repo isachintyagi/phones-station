@@ -11,10 +11,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ShowErrorModule } from '../show-error/show-error.module';
 import {MatButtonModule} from '@angular/material/button';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
     LoginComponent,
+    SignUpComponent,
   ],
   imports: [
     CommonModule,

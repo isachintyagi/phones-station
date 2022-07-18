@@ -1,0 +1,66 @@
+<div fxLayout="row">
+  <div class="image-column" fxLayoutAlign="center center" fxFlex="60%">
+    <img class="logo-map" src="../../../../assets/logos/app-logo.png" alt="map">
+  </div>
+
+  <div class="form-column" class="text-center top-position" fxLayout="column" fxFlex>
+    <div fxLayout="column" fxFlex>
+      <p class="secondtext">Create an account</p>
+    </div>
+
+    <form [formGroup]="loginForm">
+      <div fxLayout="column" class="mt-4 px-4" fxFlex fxLayoutAlign="center center">
+        <mat-form-field appearance="outline" fxFlex>
+          <mat-label class="labelcolor">Name</mat-label>
+          <input matInput formControlName="name" required>
+
+          <mat-error>
+            <show-error requiredMsg="Please enter the name." [formControlErr]="loginForm.controls.name">
+            </show-error>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" fxFlex>
+          <mat-label class="labelcolor">Email</mat-label>
+          <input matInput formControlName="emailId" required>
+
+          <mat-error>
+            <show-error requiredMsg="Email is required or has an invalid value. Please correct."
+              [formControlErr]="loginForm.controls.emailId"
+              patternMsg="Email is required or has an invalid value. Please correct.">
+            </show-error>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" fxFlex>
+          <mat-label class="labelcolor">Phone</mat-label>
+          <input matInput formControlName="phone" required>
+
+          <mat-error>
+            <show-error requiredMsg="Phone is required or has an invalid value. Please correct."
+              [formControlErr]="loginForm.controls.emailId"
+              patternMsg="Phone is required or has an invalid value. Please correct.">
+            </show-error>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" fxFlex>
+          <mat-label class="labelcolor">Password</mat-label>
+          <input matInput formControlName="password" [type]="passwordVisible?'text': 'password'" required>
+          <mat-error>
+            <show-error requiredMsg="Please enter the valid password." [formControlErr]="loginForm.controls.password"
+              patternMsg="Please enter a valid password.">
+            </show-error>
+          </mat-error>
+        </mat-form-field>
+        <div fxFlex class="text-center" fxLayout="row" class="mb-4" fxFlex>
+          <button fxFlex="30%" class="align-text" mat-button disableRipple="true" color="primary"
+            routerLink="/auth/login">back to login</button>
+        </div>
+        <div>
+          <button mat-raised-button class="btn-primary" (click)="submit()">Sign Up</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

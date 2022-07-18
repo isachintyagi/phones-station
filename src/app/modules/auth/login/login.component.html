@@ -3,14 +3,14 @@
     <img class="logo-map" src="../../../../assets/logos/app-logo.png" alt="map">
   </div>
 
-  <div class="form-column" class="text-center align-position" fxLayout="column" fxFlex>
+  <div class="form-column" class="text-center top-position" fxLayout="column" fxFlex>
     <div fxLayout="column" fxLayoutGap="30px" fxFlex>
       <p class="firsttext">Welcome to Phones Station</p>
       <p class="secondtext">Please log in to continue</p>
     </div>
 
-    <form [formGroup]="loginForm" id="kt_login_signin_form" (ngSubmit)="submit()">
-      <div fxLayout="column" class="mt-4" fxFlex fxLayoutAlign="center center">
+    <form [formGroup]="loginForm">
+      <div fxLayout="column" class="mt-4 px-4" fxFlex fxLayoutAlign="center center">
         <mat-form-field appearance="outline" fxFlex>
           <mat-label class="labelcolor">Username</mat-label>
           <input matInput formControlName="emailId" required>
@@ -33,13 +33,14 @@
               </show-error>
             </mat-error>
           </mat-form-field>
-          <div fxFlex class="text-center">
-            <button mat-icon-button color="primary" class="align-text" (click)="passwordVisible=!passwordVisible">{{passwordVisible?'Hide Password':'Show Password'}}</button>
+          <div fxFlex class="text-center" fxLayout="row" class="mb-4">
+            <button fxFlex mat-button disableRipple="true" color="primary" class="align-text"
+              (click)="passwordVisible=!passwordVisible">{{passwordVisible?'Hide Password':'Show Password'}}</button>
+            <button fxFlex mat-button disableRipple="true" color="primary" routerLink="/auth/sign-up">Sign Up</button>
           </div>
         </div>
         <div>
-          <button mat-raised-button class="btn-primary" type="submit" id="kt_login_signin_submit"
-            >Login</button>
+          <button mat-raised-button class="btn-primary" (click)="submit()">Login</button>
         </div>
       </div>
     </form>
