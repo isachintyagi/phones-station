@@ -7,7 +7,7 @@ import { AuthService } from '../services/auth.service';
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivateChild {
-  
+
   constructor(
     private authService: AuthService,
     private router: Router
@@ -18,11 +18,11 @@ export class AuthGuard implements CanActivateChild {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     const authData = this.authService.getAuthFromLocalStorage();
 
-    if (authData) {
+    if (authData && authData.token) {
       this.router.navigate(["/dashboard"]);
       return false;
     }
-
     return true;
+
   }
 }

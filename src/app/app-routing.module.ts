@@ -6,7 +6,7 @@ import { DashboardGuard } from './guards/dashboard.guard';
 const routes: Routes = [
   {
     path: 'auth',
-    // canActivateChild: [AuthGuard],
+    canActivateChild: [AuthGuard],
     loadChildren: () => import('./modules/auth/auth.module').then((m) => m.AuthModule)
   },
   {
@@ -15,7 +15,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('../app/modules/layout/layout.module').then((m) => m.LayoutModule),
   },
-  // { path: '**', redirectTo: 'error/404' },
+  { path: '**', redirectTo: 'auth' },
 ];
 
 @NgModule({
