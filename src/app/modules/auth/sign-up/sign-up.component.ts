@@ -11,7 +11,7 @@ import { RegexService } from 'src/app/services/regex.service';
 })
 export class SignUpComponent {
   passwordVisible = false;
-  loginForm: FormGroup = this.fb.group({
+  singupForm: FormGroup = this.fb.group({
     name: ["", [Validators.required]],
     emailId: ["", [Validators.required, Validators.pattern(this.regexService.email)]],
     phone: ["", [Validators.required, Validators.pattern(this.regexService.phoneNumber)]],
@@ -26,10 +26,15 @@ export class SignUpComponent {
   ) { }
 
   submit() {
-    if (this.loginForm.invalid) {
-      this.loginForm.markAllAsTouched();
+
+    this.authService.registeredEmails.subscribe((value)=>{
+console.log("vaue",value);
+
+    })
+    if (this.singupForm.invalid) {
+      this.singupForm.markAllAsTouched();
     } else {
-      this.authService.login();
+      // this.authService.signUp(this.singupForm.getRawValue());
     }
   }
 }

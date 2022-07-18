@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  registeredEmails: BehaviorSubject<any[]> = new BehaviorSubject([]);
+
   mockLoginResponseData: any = {
     "id": 0,
     "message": "Successful!",
@@ -23,7 +26,16 @@ export class AuthService {
     private router: Router
   ) { }
 
-  login() {
+  login({ emailId, password }: any) {
+    this.registeredEmails.next([emailId]);
+    this.mockLoginResponseData.email = emailId;
+
+    const resData = this.mockLoginResponseData;
+    this.saveUserDetailsInLocalStorage(resData?.data);
+    this.router.navigate(["/dashboard"]);
+  }
+
+  signUp({ emailId, password }: any) {
     const resData = this.mockLoginResponseData;
     this.saveUserDetailsInLocalStorage(resData?.data);
     this.router.navigate(["/dashboard"]);

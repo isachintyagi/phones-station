@@ -29,16 +29,20 @@
             <input matInput formControlName="password" [type]="passwordVisible?'text': 'password'" required>
             <mat-error>
               <show-error requiredMsg="Please enter your valid password." [formControlErr]="loginForm.controls.password"
-                patternMsg="Please enter a valid password.">
-              </show-error>
-            </mat-error>
-          </mat-form-field>
+              patternMsg="Please enter a valid password.">
+            </show-error>
+          </mat-error>
+        </mat-form-field>
+        <div class="register-email-msg" *ngIf="!!showRegisterErrorMsg" fxFlex>
+          Entered email address is not in our records. Please register first.
+        </div>
           <div fxFlex class="text-center" fxLayout="row" class="mb-4">
             <button fxFlex mat-button disableRipple="true" color="primary" class="align-text"
               (click)="passwordVisible=!passwordVisible">{{passwordVisible?'Hide Password':'Show Password'}}</button>
             <button fxFlex mat-button disableRipple="true" color="primary" routerLink="/auth/sign-up">Sign Up</button>
           </div>
         </div>
+
         <div>
           <button mat-raised-button class="btn-primary" (click)="submit()">Login</button>
         </div>
