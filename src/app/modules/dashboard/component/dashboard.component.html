@@ -1,1 +1,38 @@
-<p>dashboard works!</p>
+<div class="h-auto px-3 content-wrapper">
+    <div class="card res-card mt-3">
+        <h2 class="h-auto text-center mt-3 main-color font-w-600 fs-24">
+            &nbsp;Items List for Repair</h2>
+        <div class="table-responsive mx-4" class="overflow-hidden">
+            <table class="h-auto table" >
+                <thead>
+                    <tr class="tablelight text-center main-color fs-16">
+                        <th fxFlex="5%">
+                            S. No.
+                        </th>
+                        <th>Brand</th>
+                        <th>Product</th>
+                        <th>Defect</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="text-center main-color fs-16" *ngFor="let data of tableData">
+                        <td  fxFlex="5%">
+                            {{data.sNo }}
+                        </td>
+                        <td>{{data.brandName}}</td>
+                        <td>
+                            {{data.productName}}
+                        </td>
+                        <td>
+                            {{data.defect}}
+                        </td>
+                        <td>
+                            <button mat-stroked-button class="color-primary"> Request to repair</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
