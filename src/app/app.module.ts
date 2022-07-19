@@ -17,7 +17,7 @@ import { SidebarModule } from './modules/sidebar/sidebar.module';
     AppRoutingModule,
     SidebarModule,
     FlexLayoutModule,
-    HttpClientModule,
+    HttpClientModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],

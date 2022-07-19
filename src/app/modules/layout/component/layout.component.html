@@ -1,11 +1,14 @@
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-3 col-md-2 px-0">
-        <sidebar></sidebar>
+<div fxLayout="row">
+    <div class="px-0" fxFlex="20%">
+      <sidebar></sidebar>
     </div>
-    <div class="col-9 col-md-10 px-4">
+    <div class="px-4" fxFlex>
         <toolbar></toolbar>
         <router-outlet></router-outlet>
     </div>
-    </div>
 </div>
+
+<!-- <div class="container-fluid">
+    <div class="row">
+    </div>
+</div> -->

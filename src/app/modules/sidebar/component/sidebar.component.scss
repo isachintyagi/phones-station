@@ -1,23 +1,45 @@
+$bgcolor: #407EC9;
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-style: SemiBold;
 }
 
-.container{
+.container {
     margin: 0;
-    padding: 0;
-    background-color: white;
+    padding: 20px;
+    background-color: rgb(243, 246, 247);
     height: 100%;
-    overflow: auto;
+    min-width: 315px;
 }
 
-.container .head{
-    color:#E1251B;
-    font-size:33px;
+.head {
+    font-size: 33px;
     font-weight: bold;
+    height: 200px;
     padding: 30px 10px 20px;
     text-align: center;
+}
+
+
+.home-icon{
+    width: 30px;
+    height: 30px;
+}
+
+.tab-text{
+    font-size: 25px;
+    font-family: sans-serif;
+}
+
+.tab-background{
+    color: white;
+    background-color: $bgcolor;
+    border-radius: 10px;
+}
+
+ol{
+    height: max-content;
 }

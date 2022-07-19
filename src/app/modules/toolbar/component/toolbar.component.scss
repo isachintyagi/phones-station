@@ -1,0 +1,57 @@
+$color: #407EC9;
+
+
+.textclr {
+    color: $color;
+    font-size: 30px !important;
+    font-weight: 400 !important;
+}
+
+.imgborder {
+    border-radius: 50%;
+    position: relative;
+    top: -0.5rem;
+    // margin-top:-10%;
+}
+
+.d-flex {
+    gap: 15px;
+}
+
+
+.font-20 {
+    font-size: 20px;
+}
+
+.font-14 {
+    font-size: 14px;
+}
+
+.flex-item {
+    margin: 10px;
+}
+
+.font-secondary {
+    font-size: 16px;
+}
+
+@media only screen and (max-width: 1440px) {
+    .fs-16 {
+        font-size: 14px;
+    }
+
+    .mat-menu-item {
+        line-height: 30px !important;
+        height: 30px !important;
+
+        img {
+            width: 20px;
+        }
+    }
+}
+
+@media only screen and (min-width:960px) and (max-width:1400px) {
+    .m-left {
+        margin-left: 10%;
+    }
+}

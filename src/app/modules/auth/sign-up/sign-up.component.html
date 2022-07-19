@@ -34,7 +34,7 @@
 
         <mat-form-field appearance="outline" fxFlex>
           <mat-label class="labelcolor">Phone</mat-label>
-          <input matInput formControlName="phone" required>
+          <input matInput formControlName="phone" maxlength="15" required>
 
           <mat-error>
             <show-error requiredMsg="Phone is required or has an invalid value. Please correct."
@@ -46,7 +46,7 @@
 
         <mat-form-field appearance="outline" fxFlex>
           <mat-label class="labelcolor">Password</mat-label>
-          <input matInput formControlName="password" [type]="passwordVisible?'text': 'password'" maxlength="14" required>
+          <input matInput formControlName="password" [type]="passwordVisible?'text': 'password'" maxlength="30" required>
           <mat-error>
             <show-error requiredMsg="Please enter the valid password." [formControlErr]="signUpForm.controls.password"
               patternMsg="Please enter a valid password.">

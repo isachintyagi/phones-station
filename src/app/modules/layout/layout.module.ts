@@ -4,6 +4,7 @@ import { LayoutComponent } from './component/layout.component';
 import { LayoutRoutingModule } from './layout-routing.module';
 import { SidebarModule } from '../sidebar/sidebar.module';
 import { ToolbarModule } from '../toolbar/toolbar.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 
@@ -16,7 +17,8 @@ import { ToolbarModule } from '../toolbar/toolbar.module';
     CommonModule,
     LayoutRoutingModule,
     SidebarModule,
-    ToolbarModule
+    ToolbarModule,
+    FlexLayoutModule
   ]
 })
 export class LayoutModule { }

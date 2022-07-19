@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SidebarComponent } from './component/sidebar.component';
 import { ToolbarModule } from '../toolbar/toolbar.module';
 import { RouterModule } from '@angular/router';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     ToolbarModule,
-    RouterModule
+    RouterModule,
+    FlexLayoutModule
   ],
   exports: [SidebarComponent]
 })
