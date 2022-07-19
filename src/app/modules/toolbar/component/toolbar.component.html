@@ -1,1 +1,17 @@
-<p>toolbar works here!</p>
+<div class="container">
+    <div fxLayout="row" fxLayoutAlign="end center">
+        <div fxLayout="column" class="mr-2" fxFlex="95%">
+            <span fxFlex fxLayoutAlign="end center" class="text-color">{{userDetails?.userFullName||""}}</span>
+            <span fxFlex fxLayoutAlign="end center" class="sub-heading">
+                {{userDetails?.role||""}}
+            </span>
+        </div>
+
+        <div fxFlex>
+            <button mat-button (click)="logoutUser()" disableRipple="true" title="Logout">
+                <img src="../../../../assets/logos/LogoutP.svg">
+            </button>
+        </div>
+    </div>
+</div>
+<mat-divider></mat-divider>
